@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Ricardo Lovato</title>
+
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .menu ul {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #38bdf8;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #1e293b;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .form-control {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            color: white;
+        }
+
+        .form-control:focus {
+            border-color: #38bdf8;
+            box-shadow: none;
+        }
+
+        .btn-custom {
+            background-color: #38bdf8;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #0ea5e9;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Ricardo Lovato</h1>
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Sobre</a></li>
+            <li><a href="index.html">Projetos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="contact-container">
+        <h2 class="text-center mb-4">Entre em Contato</h2>
+
+        <form action="https://formspree.io/f/xjgallqb" method="POST">
+
+            <div class="mb-3">
+                <label class="form-label">Seu Email</label>
+                <input type="email" name="email" class="form-control" placeholder="seuemail@email.com" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Mensagem</label>
+                <textarea name="message" class="form-control" rows="5" placeholder="Digite sua mensagem..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-custom">Enviar Mensagem</button>
+
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>Conheça mais sobre os meus projetos: 
+        <a href="https://github.com/riclovato" style="color:#38bdf8;">GitHub</a>
+    </p>
+</footer>
+
+</body>
+</html>
