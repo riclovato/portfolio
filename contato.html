@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - Ricardo Lovato</title>
 
-   
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
@@ -46,7 +47,7 @@
             padding: 30px;
             background-color: #1e293b;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         }
 
         .form-control {
@@ -83,44 +84,71 @@
 
 <body>
 
-<header>
-    <h1>Ricardo Lovato</h1>
-    <nav class="menu">
-        <ul>
-            <li><a href="index.html">Sobre</a></li>
-            <li><a href="index.html">Projetos</a></li>
-            <li><a href="contato.html">Contato</a></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <h1>Ricardo Lovato</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Sobre</a></li>
+                <li><a href="index.html">Projetos</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<main>
-    <div class="contact-container">
-        <h2 class="text-center mb-4">Entre em Contato</h2>
+    <main>
+        <div class="contact-container">
+            <h2 class="text-center mb-4">Entre em Contato</h2>
 
-        <form action="https://formspree.io/f/xjgallqb" method="POST">
+            <form id="contactForm">
+                <div class="mb-3">
+                    <label class="form-label">Seu Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="seuemail@email.com"
+                        required>
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label">Seu Email</label>
-                <input type="email" name="email" class="form-control" placeholder="seuemail@email.com" required>
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">Mensagem</label>
+                    <textarea name="message" id="message" class="form-control" rows="5"
+                        placeholder="Digite sua mensagem..." required></textarea>
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label">Mensagem</label>
-                <textarea name="message" class="form-control" rows="5" placeholder="Digite sua mensagem..." required></textarea>
-            </div>
+                <button type="submit" class="btn btn-custom">Enviar Mensagem</button>
+            </form>
 
-            <button type="submit" class="btn btn-custom">Enviar Mensagem</button>
+            <script>
+                document.getElementById('contactForm').addEventListener('submit', async function (e) {
+                    e.preventDefault(); // impede o comportamento padrão do form
 
-        </form>
-    </div>
-</main>
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
 
-<footer>
-    <p>Conheça mais sobre os meus projetos: 
-        <a href="https://github.com/riclovato" style="color:#38bdf8;">GitHub</a>
-    </p>
-</footer>
+                    try {
+                        const response = await fetch('https://contact-api-2l73.onrender.com/api/contato', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email, message })
+                        });
+
+                        if (response.ok) {
+                            alert('Mensagem enviada com sucesso!');
+                            this.reset(); // limpa o formulário
+                        } else {
+                            alert('Erro ao enviar. Tente novamente.');
+                        }
+                    } catch (error) {
+                        alert('Erro de conexão. Tente novamente.');
+                    }
+                });
+            </script>
+        </div>
+    </main>
+
+    <footer>
+        <p>Conheça mais sobre os meus projetos:
+            <a href="https://github.com/riclovato" style="color:#38bdf8;">GitHub</a>
+        </p>
+    </footer>
 
 </body>
+
 </html>
